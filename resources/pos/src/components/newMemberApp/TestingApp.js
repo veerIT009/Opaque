@@ -460,7 +460,7 @@ const LibraryStack = (props) => {
                                                 className="btn btn-white frontend-btn"
                                                 onClick={() =>
                                                     handleClick(
-                                                        "dindayalupadhyay.smartcitylibrary.com"
+                                                        "https://dindayalupadhyay.smartcitylibrary.com"
                                                     )
                                                 }
                                             >
@@ -525,7 +525,7 @@ const LibraryStack = (props) => {
                                                 className="btn btn-white frontend-btn"
                                                 onClick={() =>
                                                     handleClick(
-                                                        "http://kundanlalgupta.smartcitylibrary.com/"
+                                                        "https://kundanlalgupta.smartcitylibrary.com/"
                                                     )
                                                 }
                                             >
@@ -590,7 +590,7 @@ const LibraryStack = (props) => {
                                                 className="btn btn-white frontend-btn"
                                                 onClick={() =>
                                                     handleClick(
-                                                        "http://rashtramatakasturba.smartcitylibrary.com/"
+                                                        "https://rashtramatakasturba.smartcitylibrary.com/"
                                                     )
                                                 }
                                             >
