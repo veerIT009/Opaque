@@ -394,7 +394,7 @@ const Trending = (props) => {
 };
 const LibraryStack = (props) => {
     const handleClick = (e) => {
-        window.open(e, "_blank");
+        location.href = e;
     };
     return (
         <section className="case-studies" id="library-section">
