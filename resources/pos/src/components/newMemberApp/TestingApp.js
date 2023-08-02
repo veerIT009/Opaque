@@ -106,28 +106,9 @@ const Staff = (props) => {
                                                                     ? "E-Book"
                                                                     : "Book"}
                                                             </span>
-
-                                                            {/* {book?.library_id ===
-                                                            111 ? (
-                                                                <span className="badge badge-success">
-                                                                    L1
-                                                                </span>
-                                                            ) : book?.library_id ===
-                                                              222 ? (
-                                                                <span className="badge badge-danger">
-                                                                    L2
-                                                                </span>
-                                                            ) : (
-                                                                <span className="badge badge-primary">
-                                                                    L3
-                                                                </span>
-                                                            )} */}
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        {/* <h6 className="text-white pb-2 px-3">
-                                                            Know more about the Book
-                                                        </h6> */}
                                                         <button
                                                             className="btn btn-white frontend-btn"
                                                             onClick={() =>
@@ -411,346 +392,222 @@ const Trending = (props) => {
         </section>
     );
 };
+const LibraryStack = (props) => {
+    const handleClick = (e) => {
+        window.open(e, "_blank");
+    };
+    return (
+        <section className="case-studies" id="library-section">
+            <div className="container">
+                <div className="row grid-margin">
+                    <div className="col-12 text-center common-heading pb-5">
+                        <h2
+                            style={{
+                                fontSize: "3rem",
+                                fontFamily: "Philosopher",
+                            }}
+                        >
+                            Library
+                        </h2>
+                        <div className="section-divider divider-traingle"></div>
+                    </div>
 
-// const Users = (props) => {
-//     return (
-//         <section className="customer-feedback" id="feedback-section">
-//             <div className="row">
-//                 <div className="col-12 text-center common-heading pb-5">
-//                     <h2 style={{ fontSize: "3rem", fontFamily: "Philosopher" }}>
-//                         What our customers have to say
-//                     </h2>
-//                     {/* <h6 className="section-subtitle text-muted m-0">
-//                         Lorem ipsum dolor sit amet, tincidunt vestibulum.
-//                     </h6> */}
-//                 </div>
-//                 <div className="owl-carousel owl-theme grid-margin">
-//                     <div className="card customer-cards">
-//                         <div className="card-body">
-//                             <div className="text-center">
-//                                 <img
-//                                     src="images/face2.jpg"
-//                                     width="89"
-//                                     height="89"
-//                                     alt=""
-//                                     className="img-customer"
-//                                 />
-//                                 <p className="m-0 py-3 text-muted">
-//                                     Lorem ipsum dolor sit amet, tincidunt
-//                                     vestibulum. Fusce egeabus consectetuer
-//                                     turpis, suspendisse.
-//                                 </p>
-//                                 <div className="content-divider m-auto"></div>
-//                                 <h6 className="card-title pt-3">
-//                                     Tony Martinez
-//                                 </h6>
-//                                 <h6 className="customer-designation text-muted m-0">
-//                                     Marketing Manager
-//                                 </h6>
-//                             </div>
-//                         </div>
-//                     </div>
-//                     <div className="card customer-cards">
-//                         <div className="card-body">
-//                             <div className="text-center">
-//                                 <img
-//                                     src="images/face3.jpg"
-//                                     width="89"
-//                                     height="89"
-//                                     alt=""
-//                                     className="img-customer"
-//                                 />
-//                                 <p className="m-0 py-3 text-muted">
-//                                     Lorem ipsum dolor sit amet, tincidunt
-//                                     vestibulum. Fusce egeabus consectetuer
-//                                     turpis, suspendisse.
-//                                 </p>
-//                                 <div className="content-divider m-auto"></div>
-//                                 <h6 className="card-title pt-3">
-//                                     Sophia Armstrong
-//                                 </h6>
-//                                 <h6 className="customer-designation text-muted m-0">
-//                                     Marketing Manager
-//                                 </h6>
-//                             </div>
-//                         </div>
-//                     </div>
-//                     <div className="card customer-cards">
-//                         <div className="card-body">
-//                             <div className="text-center">
-//                                 <img
-//                                     src="images/face20.jpg"
-//                                     width="89"
-//                                     height="89"
-//                                     alt=""
-//                                     className="img-customer"
-//                                 />
-//                                 <p className="m-0 py-3 text-muted">
-//                                     Lorem ipsum dolor sit amet, tincidunt
-//                                     vestibulum. Fusce egeabus consectetuer
-//                                     turpis, suspendisse.
-//                                 </p>
-//                                 <div className="content-divider m-auto"></div>
-//                                 <h6 className="card-title pt-3">
-//                                     Cody Lambert
-//                                 </h6>
-//                                 <h6 className="customer-designation text-muted m-0">
-//                                     Marketing Manager
-//                                 </h6>
-//                             </div>
-//                         </div>
-//                     </div>
-//                     <div className="card customer-cards">
-//                         <div className="card-body">
-//                             <div className="text-center">
-//                                 <img
-//                                     src="images/face15.jpg"
-//                                     width="89"
-//                                     height="89"
-//                                     alt=""
-//                                     className="img-customer"
-//                                 />
-//                                 <p className="m-0 py-3 text-muted">
-//                                     Lorem ipsum dolor sit amet, tincidunt
-//                                     vestibulum. Fusce egeabus consectetuer
-//                                     turpis, suspendisse.
-//                                 </p>
-//                                 <div className="content-divider m-auto"></div>
-//                                 <h6 className="card-title pt-3">
-//                                     Cody Lambert
-//                                 </h6>
-//                                 <h6 className="customer-designation text-muted m-0">
-//                                     Marketing Manager
-//                                 </h6>
-//                             </div>
-//                         </div>
-//                     </div>
-//                     <div className="card customer-cards">
-//                         <div className="card-body">
-//                             <div className="text-center">
-//                                 <img
-//                                     src="images/face16.jpg"
-//                                     width="89"
-//                                     height="89"
-//                                     alt=""
-//                                     className="img-customer"
-//                                 />
-//                                 <p className="m-0 py-3 text-muted">
-//                                     Lorem ipsum dolor sit amet, tincidunt
-//                                     vestibulum. Fusce egeabus consectetuer
-//                                     turpis, suspendisse.
-//                                 </p>
-//                                 <div className="content-divider m-auto"></div>
-//                                 <h6 className="card-title pt-3">
-//                                     Cody Lambert
-//                                 </h6>
-//                                 <h6 className="customer-designation text-muted m-0">
-//                                     Marketing Manager
-//                                 </h6>
-//                             </div>
-//                         </div>
-//                     </div>
-//                     <div className="card customer-cards">
-//                         <div className="card-body">
-//                             <div className="text-center">
-//                                 <img
-//                                     src="images/face1.jpg"
-//                                     width="89"
-//                                     height="89"
-//                                     alt=""
-//                                     className="img-customer"
-//                                 />
-//                                 <p className="m-0 py-3 text-muted">
-//                                     Lorem ipsum dolor sit amet, tincidunt
-//                                     vestibulum. Fusce egeabus consectetuer
-//                                     turpis, suspendisse.
-//                                 </p>
-//                                 <div className="content-divider m-auto"></div>
-//                                 <h6 className="card-title pt-3">
-//                                     Tony Martinez
-//                                 </h6>
-//                                 <h6 className="customer-designation text-muted m-0">
-//                                     Marketing Manager
-//                                 </h6>
-//                             </div>
-//                         </div>
-//                     </div>
-//                     <div className="card customer-cards">
-//                         <div className="card-body">
-//                             <div className="text-center">
-//                                 <img
-//                                     src="images/face2.jpg"
-//                                     width="89"
-//                                     height="89"
-//                                     alt=""
-//                                     className="img-customer"
-//                                 />
-//                                 <p className="m-0 py-3 text-muted">
-//                                     Lorem ipsum dolor sit amet, tincidunt
-//                                     vestibulum. Fusce egeabus consectetuer
-//                                     turpis, suspendisse.
-//                                 </p>
-//                                 <div className="content-divider m-auto"></div>
-//                                 <h6 className="card-title pt-3">
-//                                     Tony Martinez
-//                                 </h6>
-//                                 <h6 className="customer-designation text-muted m-0">
-//                                     Marketing Manager
-//                                 </h6>
-//                             </div>
-//                         </div>
-//                     </div>
-//                     <div className="card customer-cards">
-//                         <div className="card-body">
-//                             <div className="text-center">
-//                                 <img
-//                                     src="images/face3.jpg"
-//                                     width="89"
-//                                     height="89"
-//                                     alt=""
-//                                     className="img-customer"
-//                                 />
-//                                 <p className="m-0 py-3 text-muted">
-//                                     Lorem ipsum dolor sit amet, tincidunt
-//                                     vestibulum. Fusce egeabus consectetuer
-//                                     turpis, suspendisse.
-//                                 </p>
-//                                 <div className="content-divider m-auto"></div>
-//                                 <h6 className="card-title pt-3">
-//                                     Sophia Armstrong
-//                                 </h6>
-//                                 <h6 className="customer-designation text-muted m-0">
-//                                     Marketing Manager
-//                                 </h6>
-//                             </div>
-//                         </div>
-//                     </div>
-//                     <div className="card customer-cards">
-//                         <div className="card-body">
-//                             <div className="text-center">
-//                                 <img
-//                                     src="images/face20.jpg"
-//                                     width="89"
-//                                     height="89"
-//                                     alt=""
-//                                     className="img-customer"
-//                                 />
-//                                 <p className="m-0 py-3 text-muted">
-//                                     Lorem ipsum dolor sit amet, tincidunt
-//                                     vestibulum. Fusce egeabus consectetuer
-//                                     turpis, suspendisse.
-//                                 </p>
-//                                 <div className="content-divider m-auto"></div>
-//                                 <h6 className="card-title pt-3">
-//                                     Cody Lambert
-//                                 </h6>
-//                                 <h6 className="customer-designation text-muted m-0">
-//                                     Marketing Manager
-//                                 </h6>
-//                             </div>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </section>
-//     );
-// };
+                    {/* second */}
+                    <div
+                        /*   key={i} */
+                        className="col-12 col-md-6 col-lg-4 stretch-card mb-4 mb-lg-0"
+                        data-aos="zoom-in"
+                    >
+                        <div className="card color-cards">
+                            <div className="card-body p-0">
+                                <div
+                                    className="text-center card-contents"
+                                    style={{
+                                        backgroundColor: "#f2f2f2",
+                                    }}
+                                    /* onClick={() =>
+                                        handleDetails(book.id, book.library_id)
+                                    } */
+                                >
+                                    <div className="card-image">
+                                        <img
+                                            src={
+                                                "https://cdn-icons-png.flaticon.com/512/1596/1596392.png"
+                                            }
+                                            className="case-studies-card-img"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <div className="card-details text-center pt-4">
+                                        <h6 className="m-0 pb-1">
+                                            Dindayal Upadhyay Library
+                                        </h6>
+                                    </div>
 
-// const Genres = (props) => {
-//     const { genres } = props;
-//     return (
-//         // <section className="case-studies" id="authors-section">
-//         //     <div className="row grid-margin">
-//         //         <div className="col-12 text-center pb-5">
-//         //             <h2 style={{ fontSize: "3rem", fontFamily: "Philosopher" }}>
-//         //                 Genres
-//         //             </h2>
-//         //             {/* <h6 className="section-subtitle text-muted">
-//         //                 Lorem ipsum dolor sit amet, tincidunt vestibulum.
-//         //             </h6> */}
-//         //         </div>
-//         //         <div className="col-12 mb-lg-0 mx-auto" data-aos="zoom-in">
-//         //             <ul
-//         //                 className="authors-container"
-//         //                 style={{
-//         //                     display: "grid",
-//         //                     gridTemplateRows: "repeat(4, 100px)",
-//         //                     gridTemplateColumns: "repeat(3, 1fr)",
-//         //                     gridGap: "1rem",
-//         //                     gridAutoRows: "100px",
-//         //                     justifyContent: "center",
-//         //                     alignItems: "center",
-//         //                 }}
-//         //             >
-//         //                 {genres &&
-//         //                     genres.map(({ name, description }, i) => {
-//         //                         return (
-//         //                             <li
-//         //                                 key={i}
-//         //                                 className="authors-list"
-//         //                                 style={{
-//         //                                     alignSelf: "center",
-//         //                                     gridArea: "1fr",
-//         //                                     fontSize: "2rem",
-//         //                                     fontFamily: "Philosopher",
-//         //                                     color: "#fff",
-//         //                                     textAlign: "center",
-//         //                                     padding: "10px 100px",
-//         //                                     backgroundColor: "#CF4745",
-//         //                                     borderRadius: "6px",
-//         //                                 }}
-//         //                             >
-//         //                                 {name}
-//         //                             </li>
-//         //                         );
-//         //                     })}
-//         //             </ul>
-//         //         </div>
-//         //     </div>
-//         // </section>
-//         <section className="customer-feedback" id="authors-section">
-//             <div className="row">
-//                 <div className="col-12 text-center common-heading pb-5">
-//                     <h2 style={{ fontSize: "3rem", fontFamily: "Philosopher" }}>
-//                         Genres
-//                     </h2>
-//                     {/* <h6 className="section-subtitle text-muted m-0">
-//                         Lorem ipsum dolor sit amet, tincidunt vestibulum.
-//                     </h6> */}
-//                 </div>
-//                 <div className="owl-carousel owl-theme grid-margin">
-//                     {genres.map(({ name, description }, i) => {
-//                         return (
-//                             <div className="card customer-cards" key={i}>
-//                                 <div className="card-body">
-//                                     <div className="text-center">
-//                                         {/* <img
-//                                             src="images/face2.jpg"
-//                                             width="89"
-//                                             height="89"
-//                                             alt=""
-//                                             className="img-customer"
-//                                         /> */}
-//                                         <h1 className="card-title pt-3">
-//                                             {name}
-//                                         </h1>
-//                                         <div className="content-divider m-auto"></div>
-//                                         <p className="m-0 py-3 text-muted">
-//                                             {description}
-//                                         </p>
-//                                         {/* <h6 className="customer-designation text-muted m-0">
-//                                             Marketing Manager
-//                                         </h6> */}
-//                                     </div>
-//                                 </div>
-//                             </div>
-//                         );
-//                     })}
-//                 </div>
-//             </div>
-//         </section>
-//     );
-// };
+                                    <div className="card-desc-box d-flex align-items-center justify-content-around">
+                                        <div
+                                            style={{
+                                                width: "fit-content",
+                                                padding: "auto 5px",
+                                            }}
+                                        >
+                                            <div className="d-flex align-items-center gap-3">
+                                                <span className="badge badge-info"></span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button
+                                                className="btn btn-white frontend-btn"
+                                                onClick={() =>
+                                                    handleClick(
+                                                        "dindayalupadhyay.smartcitylibrary.com"
+                                                    )
+                                                }
+                                            >
+                                                <span> Go To</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/* second end  */}
+                    {/* third  */}
+                    <div
+                        /*   key={i} */
+                        className="col-12 col-md-6 col-lg-4 stretch-card mb-4 mb-lg-0"
+                        data-aos="zoom-in"
+                    >
+                        <div className="card color-cards">
+                            <div className="card-body p-0">
+                                <div
+                                    className="text-center card-contents"
+                                    style={{
+                                        backgroundColor: "#f2f2f2",
+                                    }}
+                                    /* onClick={() =>
+                                        handleDetails(book.id, book.library_id)
+                                    } */
+                                >
+                                    <div className="card-image">
+                                        <img
+                                            src={
+                                                "https://cdn-icons-png.flaticon.com/512/1596/1596392.png"
+                                            }
+                                            className="case-studies-card-img"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <div className="card-details text-center pt-4">
+                                        <h6 className="m-0 pb-1">
+                                            Kundanlal Gupta Library
+                                        </h6>
+                                    </div>
+
+                                    <div className="card-desc-box d-flex align-items-center justify-content-around">
+                                        <div
+                                            style={{
+                                                width: "fit-content",
+                                                padding: "auto 5px",
+                                            }}
+                                        >
+                                            <div className="d-flex align-items-center gap-3">
+                                                <span className="badge badge-info">
+                                                    {/*  {book?.format === 3
+                                                        ? "E-Book"
+                                                        : "Book"} */}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button
+                                                className="btn btn-white frontend-btn"
+                                                onClick={() =>
+                                                    handleClick(
+                                                        "http://kundanlalgupta.smartcitylibrary.com/"
+                                                    )
+                                                }
+                                            >
+                                                <span> Go To</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/* third end  */}
+                    {/* second */}
+                    <div
+                        /*   key={i} */
+                        className="col-12 col-md-6 col-lg-4 stretch-card mb-4 mb-lg-0"
+                        data-aos="zoom-in"
+                    >
+                        <div className="card color-cards">
+                            <div className="card-body p-0">
+                                <div
+                                    className="text-center card-contents"
+                                    style={{
+                                        backgroundColor: "#f2f2f2",
+                                    }}
+                                    /* onClick={() =>
+                                        handleDetails(book.id, book.library_id)
+                                    } */
+                                >
+                                    <div className="card-image">
+                                        <img
+                                            src={
+                                                "https://cdn-icons-png.flaticon.com/512/1596/1596392.png"
+                                            }
+                                            className="case-studies-card-img"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <div className="card-details text-center pt-4">
+                                        <h6 className="m-0 pb-1">
+                                            Rashtramata Kasturba Library
+                                        </h6>
+                                    </div>
+
+                                    <div className="card-desc-box d-flex align-items-center justify-content-around">
+                                        <div
+                                            style={{
+                                                width: "fit-content",
+                                                padding: "auto 5px",
+                                            }}
+                                        >
+                                            <div className="d-flex align-items-center gap-3">
+                                                <span className="badge badge-info">
+                                                    {/*  {book?.format === 3
+                                                        ? "E-Book"
+                                                        : "Book"} */}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button
+                                                className="btn btn-white frontend-btn"
+                                                onClick={() =>
+                                                    handleClick(
+                                                        "http://rashtramatakasturba.smartcitylibrary.com/"
+                                                    )
+                                                }
+                                            >
+                                                <span> Go To</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/* second end  */}
+                </div>
+            </div>
+        </section>
+    );
+};
 
 const Hero = (props) => {
     const {
@@ -769,7 +626,6 @@ const Hero = (props) => {
     const [value, setValue] = useState("");
 
     const [filter, setFilter] = useState("book");
-    // const [filterBooks, setFilterBooks] = useState(books);
 
     const handleFilter = (e) => {
         setFilter((prev) => (prev = e.target.id));
@@ -780,36 +636,11 @@ const Hero = (props) => {
         setSearchData({ ...searchData, [name]: value });
     };
 
-    // const onHandleSearch = (e) => {
-    //     setIsSearched(true);
-    //     e.preventDefault();
-    //     const { title, searchedBy } = searchData;
-
-    //     var newBooks = [];
-    //     // console.log({ newBooks, title, searchedBy });
-    //     if (title) {
-    //         newBooks = books.filter(
-    //             (book) =>
-    //                 book.authors_name.replaceAll(" ", "").includes(title) ||
-    //                 book.name.replaceAll(" ", "").includes(title)
-    //         );
-    //         goToRef(searchBookRef);
-    //         setFilteredBook(newBooks);
-    //     }
-    // };
-
-    // React search autocomplete;
-
     const handleOnSearch = (string, results) => {
-        // onSearch will have as the first callback parameter
-        // the string searched and for the second the results.
-        // console.log(string, results);
         setValue(string);
     };
 
     const handleOnSelect = (item) => {
-        // the item selected
-        // console.log(item.name.replaceAll(" ", ""));
         const value =
             filter === "book"
                 ? item.name.replaceAll(" ", "")
@@ -837,78 +668,19 @@ const Hero = (props) => {
     };
 
     return (
-        <div
-            className="banner pt-4"
-            // style={{
-            //     background:
-            //         "url(https://img.freepik.com/free-vector/watercolor-background_91008-33.jpg?w=1060&t=st=1675325030~exp=1675325630~hmac=605d32212834eeebb637f52f08f0ce6f48494c2064339e1d73c07e0c32c1f54f)",
-            // }}
-        >
+        <div className="banner pt-4">
             <div className="container d-flex align-items-center">
                 <div className="col-sm-6 banner_text">
                     <h1
                         className="text-4xl font-weight-semibold"
                         style={{ fontSize: "3rem", fontFamily: "Philosopher" }}
                     >
-                        Nagpur Digital Library
+                        Nagpur Smart City Digital Library
                     </h1>
                     <h6 className="font-weight-normal text-muted pb-3">
                         Serving You Millions of eResources | 24x7 | Everywhere
                     </h6>
                     <div className="s003" id="book_search_home_page_form">
-                        {/* <form>
-                        <div className="inner-form">
-                            <div className="input-field first-wrap">
-                                <div className="input-select">
-                                    <select
-                                        data-trigger=""
-                                        name="searchedBy"
-                                        id="book_or_author"
-                                        onChange={onChangeInput}
-                                    >
-                                        <option disabled defaultChecked={true}>
-                                            Search By
-                                        </option>
-                                        <option value="book">Book</option>
-                                        <option value="author">Author</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="input-field second-wrap">
-                                <input
-                                    id="search"
-                                    required
-                                    type="text"
-                                    name="title"
-                                    placeholder="Search Book name or Author name?"
-                                    onChange={onChangeInput}
-                                />
-                            </div>
-                            <div className="input-field third-wrap">
-                                <button
-                                    className="btn-search"
-                                    type="button"
-                                    onClick={(e) => onHandleSearch(e)}
-                                >
-                                    <svg
-                                        className="svg-inline--fa fa-search fa-w-16"
-                                        aria-hidden="true"
-                                        data-prefix="fas"
-                                        data-icon="search"
-                                        role="img"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 512 512"
-                                    >
-                                        <path
-                                            fill="currentColor"
-                                            d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
-                                        ></path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </form> */}
-
                         <div style={{ width: 400 }}>
                             <div className="search-bar">
                                 <div className="dropdown rounded-full">
@@ -1212,13 +984,10 @@ function TestingApp(props) {
             <Header {...headerOptions} />
             <div className="content-wrapper">
                 <Hero {...heroOptions} />
-
-                {/* {isSearched ? (
-                        <SearchedBooks {...searchBookOptions} />
-                    ) : null} */}
+                <LibraryStack />
                 <Staff {...staffOptions} />
                 <InfoSection />
-                {/* <Genres {...genresOptions} /> */}
+
                 <Trending {...trendingOptions} />
                 {/* <Users /> */}
             </div>
