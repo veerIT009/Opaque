@@ -595,7 +595,7 @@ pre code {
     margin-left: auto;
 }
 
-/* 
+/*
 .ebook-inner-container .btn {
     margin: 0px !important;
 } */
@@ -15269,7 +15269,7 @@ button#dropdown-basic {
     text-decoration: unset;
 }
 
-/* 
+/*
 .Toastify {
     display: none !important;
 } */
@@ -16269,7 +16269,7 @@ body:not(.frontend) .input-group-prepend {
     z-index: 999;
 }
 
-/* 
+/*
 #book_search_home_page_form {
     z-index: 9;
 } */
@@ -16415,4 +16415,12 @@ a:focus {
 
 .page.page-cover.page-cover-bottom {
     box-shadow: inset 0px 0 30px 0px rgba(36, 10, 3, 0.5), 10px 0 8px 0px rgba(0, 0, 0, 0.4);
+}
+
+.card.color-cards {
+    padding: 15px;
+}
+
+.navbar-brand-wrapper img {
+    width: 215px;
 }

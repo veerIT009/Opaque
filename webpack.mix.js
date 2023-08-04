@@ -34,7 +34,7 @@ mix.webpackConfig({
         children: true,
     },
     plugins: [
-        new BundleAnalyzerPlugin(),
+        // new BundleAnalyzerPlugin(),
         new CompressionPlugin({
             algorithm: "gzip",
             threshold: 10240,

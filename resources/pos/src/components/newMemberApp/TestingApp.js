@@ -417,6 +417,11 @@ const LibraryStack = (props) => {
                         /*   key={i} */
                         className="col-12 col-md-6 col-lg-4 stretch-card mb-4 mb-lg-0"
                         data-aos="zoom-in"
+                        onClick={() =>
+                            handleClick(
+                                "https://dindayalupadhyay.smartcitylibrary.com"
+                            )
+                        }
                     >
                         <div className="card color-cards">
                             <div className="card-body p-0">
@@ -431,9 +436,7 @@ const LibraryStack = (props) => {
                                 >
                                     <div className="card-image">
                                         <img
-                                            src={
-                                                "https://cdn-icons-png.flaticon.com/512/1596/1596392.png"
-                                            }
+                                            src={"logo/l1.png"}
                                             className="case-studies-card-img"
                                             alt=""
                                         />
@@ -464,7 +467,7 @@ const LibraryStack = (props) => {
                                                     )
                                                 }
                                             >
-                                                <span> Go To</span>
+                                                <span>Visit</span>
                                             </button>
                                         </div>
                                     </div>
@@ -478,6 +481,11 @@ const LibraryStack = (props) => {
                         /*   key={i} */
                         className="col-12 col-md-6 col-lg-4 stretch-card mb-4 mb-lg-0"
                         data-aos="zoom-in"
+                        onClick={() =>
+                            handleClick(
+                                "https://dindayalupadhyay.smartcitylibrary.com"
+                            )
+                        }
                     >
                         <div className="card color-cards">
                             <div className="card-body p-0">
@@ -492,9 +500,7 @@ const LibraryStack = (props) => {
                                 >
                                     <div className="card-image">
                                         <img
-                                            src={
-                                                "https://cdn-icons-png.flaticon.com/512/1596/1596392.png"
-                                            }
+                                            src={"logo/l2.png"}
                                             className="case-studies-card-img"
                                             alt=""
                                         />
@@ -529,7 +535,7 @@ const LibraryStack = (props) => {
                                                     )
                                                 }
                                             >
-                                                <span> Go To</span>
+                                                <span>Visit</span>
                                             </button>
                                         </div>
                                     </div>
@@ -543,6 +549,11 @@ const LibraryStack = (props) => {
                         /*   key={i} */
                         className="col-12 col-md-6 col-lg-4 stretch-card mb-4 mb-lg-0"
                         data-aos="zoom-in"
+                        onClick={() =>
+                            handleClick(
+                                "https://rashtramatakasturba.smartcitylibrary.com/"
+                            )
+                        }
                     >
                         <div className="card color-cards">
                             <div className="card-body p-0">
@@ -557,9 +568,7 @@ const LibraryStack = (props) => {
                                 >
                                     <div className="card-image">
                                         <img
-                                            src={
-                                                "https://cdn-icons-png.flaticon.com/512/1596/1596392.png"
-                                            }
+                                            src={"logo/l3.png"}
                                             className="case-studies-card-img"
                                             alt=""
                                         />
@@ -594,7 +603,7 @@ const LibraryStack = (props) => {
                                                     )
                                                 }
                                             >
-                                                <span> Go To</span>
+                                                <span>Visit</span>
                                             </button>
                                         </div>
                                     </div>
