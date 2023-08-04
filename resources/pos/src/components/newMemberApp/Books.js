@@ -90,15 +90,15 @@ function Items({ currentItems: books, handleDetails }) {
 
                                             {book?.library_id === 111 ? (
                                                 <span className="badge badge-success">
-                                                    L1
+                                                     Dindayal Upadhyay Library
                                                 </span>
                                             ) : book?.library_id === 222 ? (
                                                 <span className="badge badge-danger">
-                                                    L2
+                                                    Kundanlal Gupta Library
                                                 </span>
                                             ) : (
                                                 <span className="badge badge-primary">
-                                                    L3
+                                                    Rashtramata Kasturba Library
                                                 </span>
                                             )}
                                         </div>
