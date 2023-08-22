@@ -483,7 +483,7 @@ const LibraryStack = (props) => {
                         data-aos="zoom-in"
                         onClick={() =>
                             handleClick(
-                                "https://dindayalupadhyay.smartcitylibrary.com"
+                                "https://kundanlalgupta.smartcitylibrary.com"
                             )
                         }
                     >
