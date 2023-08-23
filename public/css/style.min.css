@@ -12014,9 +12014,6 @@ button.btn.erp:hover {
         width: calc(100% + 100px);
     }
 
-    body .search-bar>div:nth-child(2) {
-        position: unset;
-    }
 
     .frontend .navbar .navbar-menu-wrapper.navbar-collapse.show button.navbar-toggler:not(.close-button) {
         display: none;
@@ -14624,7 +14621,7 @@ nav#navbar {
 
 #book_search_home_page_form {
     padding: 0px;
-    z-index: 1;
+    z-index: 9;
     position: relative;
 }
 
