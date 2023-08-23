@@ -15,6 +15,7 @@ import { fetchPublishersWithout } from "../../admin/store/actions/publisherActio
 import { fetchAuthorsWithoutToken } from "../../member/store/actions/authorAction";
 import { fetchBookLanguagesWithout } from "../../admin/store/actions/bookLanguageAction";
 import libraryStatus from "./libraryStatus.json";
+
 function Items({ currentItems: books, handleDetails }) {
     return books ? (
         books.map((book, i) => {
@@ -81,7 +82,7 @@ function Items({ currentItems: books, handleDetails }) {
                                             padding: "auto 5px",
                                         }}
                                     >
-                                        <div className="d-flex align-items-center gap-3">
+                                        <div className="d-flex flex-column align-items-center library_badge">
                                             <span className="badge badge-info">
                                                 {book?.items[0]?.format === 3
                                                     ? "E-Book"
@@ -89,20 +90,20 @@ function Items({ currentItems: books, handleDetails }) {
                                             </span>
 
                                             {book?.library_id === 111 ? (
-                                                <span className="badge badge-success">
-                                                     Dindayal Upadhyay Library
+                                                <span className="badge badge-danger">
+                                                    Dindayal Upadhyay Library
                                                 </span>
                                             ) : book?.library_id === 222 ? (
                                                 <span className="badge badge-danger">
                                                     Kundanlal Gupta Library
                                                 </span>
                                             ) : (
-                                                <span className="badge badge-primary">
+                                                <span className="badge badge-danger">
                                                     Rashtramata Kasturba Library
                                                 </span>
                                             )}
                                         </div>
-                                        <div>
+                                        <div className="available_book">
                                             {book.items.find(
                                                 (item) => item.status === 1
                                             ) ? (
@@ -181,7 +182,6 @@ const BookList = (props) => {
     // );
 
     const handleDetails = (id, name, format, library_id) => {
-        console.log({ format });
         if (format && format === 3) {
             navigate("/ebook-details/" + id + "/" + library_id);
         } else {
@@ -242,12 +242,16 @@ const BookList = (props) => {
         if (publisherId) {
             if (fb.length) {
                 fb = fb.filter(
-                    (book) => book.items[0].publisher.id == publisherId
+                    (book) =>
+                        book.items.length &&
+                        book.items[0].publisher.id == publisherId
                 );
                 setFilteredBooks(fb);
             } else {
                 fb = books.filter(
-                    (book) => book.items[0].publisher.id == publisherId
+                    (book) =>
+                        book.items.length &&
+                        book.items[0].publisher.id == publisherId
                 );
                 setFilteredBooks(fb);
             }
@@ -264,12 +268,16 @@ const BookList = (props) => {
         if (languageId) {
             if (fb.length) {
                 fb = fb.filter(
-                    (book) => book.items[0].language.id == languageId
+                    (book) =>
+                        book.items.length &&
+                        book.items[0].language.id == languageId
                 );
                 setFilteredBooks(fb);
             } else {
                 fb = books.filter(
-                    (book) => book.items[0].language.id == languageId
+                    (book) =>
+                        book.items.length &&
+                        book.items[0].language.id == languageId
                 );
                 setFilteredBooks(fb);
             }
@@ -295,6 +303,7 @@ const BookList = (props) => {
             if (fb.length) {
                 fb = fb.filter(
                     (book) =>
+                        book.items.length &&
                         book.genres[0].id == genreId &&
                         book.items[0].language.id == languageId
                 );
@@ -302,6 +311,7 @@ const BookList = (props) => {
             } else {
                 fb = books.filter(
                     (book) =>
+                        book.items.length &&
                         book.genres[0].id == genreId &&
                         book.items[0].language.id == languageId
                 );
@@ -312,6 +322,7 @@ const BookList = (props) => {
             if (fb.length) {
                 fb = fb.filter(
                     (book) =>
+                        book.items.length &&
                         book.genres[0].id == genreId &&
                         book.items[0].publisher.id == publisherId
                 );
@@ -319,6 +330,7 @@ const BookList = (props) => {
             } else {
                 fb = books.filter(
                     (book) =>
+                        book.items.length &&
                         book.genres[0].id == genreId &&
                         book.items[0].publisher.id == publisherId
                 );
@@ -329,6 +341,7 @@ const BookList = (props) => {
             if (fb.length) {
                 fb = fb.filter(
                     (book) =>
+                        book.items.length &&
                         book.authors[0].id == authorId &&
                         book.items[0].publisher.id == publisherId
                 );
@@ -336,6 +349,7 @@ const BookList = (props) => {
             } else {
                 fb = books.filter(
                     (book) =>
+                        book.items.length &&
                         book.authors[0].id == authorId &&
                         book.items[0].publisher.id == publisherId
                 );
@@ -346,6 +360,7 @@ const BookList = (props) => {
             if (fb.length) {
                 fb = fb.filter(
                     (book) =>
+                        book.items.length &&
                         book.items[0].language.id == languageId &&
                         book.items[0].publisher.id == publisherId
                 );
@@ -353,6 +368,7 @@ const BookList = (props) => {
             } else {
                 fb = books.filter(
                     (book) =>
+                        book.items.length &&
                         book.items[0].language.id == languageId &&
                         book.items[0].publisher.id == publisherId
                 );
@@ -363,6 +379,7 @@ const BookList = (props) => {
             if (fb.length) {
                 fb = fb.filter(
                     (book) =>
+                        book.items.length &&
                         book.authors[0].id == authorId &&
                         book.items[0].language.id == languageId
                 );
@@ -370,6 +387,7 @@ const BookList = (props) => {
             } else {
                 fb = books.filter(
                     (book) =>
+                        book.items.length &&
                         book.authors[0].id == authorId &&
                         book.items[0].language.id == languageId
                 );
@@ -380,6 +398,7 @@ const BookList = (props) => {
             if (fb.length) {
                 fb = fb.filter(
                     (book) =>
+                        book.items.length &&
                         book.genres[0].id == genreId &&
                         book.items[0].publisher.id == publisherId &&
                         book.authors[0].id == authorId &&
@@ -389,6 +408,7 @@ const BookList = (props) => {
             } else {
                 fb = books.filter(
                     (book) =>
+                        book.items.length &&
                         book.genres[0].id == genreId &&
                         book.items[0].publisher.id == publisherId &&
                         book.authors[0].id == authorId &&
@@ -398,21 +418,20 @@ const BookList = (props) => {
             }
         }
 
-        console.log({
-            fb,
-            genreId,
-            publisherId,
-            authorId,
-            languageId,
-            libraryId,
-        });
+        // console.log({
+        //     fb,
+        //     genreId,
+        //     publisherId,
+        //     authorId,
+        //     languageId,
+        //     libraryId,
+        // });
     }, [genreId, publisherId, authorId, languageId, libraryId]);
 
     const itemsOptions = {
         currentItems,
         handleDetails,
     };
-
     const handleOnSearch = (string, results) => {
         // onSearch will have as the first callback parameter
         // the string searched and for the second the results.
@@ -768,23 +787,25 @@ function Books(props) {
     }, [books]);
 
     return (
-        <div className="content-wrapper">
-            <ProgressBar />
+        <>
             <Header getCurrentMember={getCurrentMember} goTo={goTo} />
-            <div className="container-fluid">
-                <BookList
-                    books={books}
-                    goTo={goTo}
-                    genres={genres}
-                    publishers={publishers}
-                    authors={authors}
-                    filteredBooks={filteredBooks}
-                    setFilteredBooks={setFilteredBooks}
-                    bookLanguage={bookLanguage}
-                />
+            <div className="content-wrapper">
+                <ProgressBar />
+                <div className="container-fluid">
+                    <BookList
+                        books={books}
+                        goTo={goTo}
+                        genres={genres}
+                        publishers={publishers}
+                        authors={authors}
+                        filteredBooks={filteredBooks}
+                        setFilteredBooks={setFilteredBooks}
+                        bookLanguage={bookLanguage}
+                    />
+                </div>
             </div>
             <Footer />
-        </div>
+        </>
     );
 }
 

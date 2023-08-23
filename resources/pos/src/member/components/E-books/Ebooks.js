@@ -79,12 +79,12 @@ const Ebooks = (props) => {
                 </span>
             ),
         },
-        {
-            name: getFormattedMessage("e-books.input.edition.label"),
-            selector: (row) => row.edition,
-            sortable: true,
-            cell: (row) => <span>{row.edition}</span>,
-        },
+        // {
+        //     name: getFormattedMessage("e-books.input.edition.label"),
+        //     selector: (row) => row.edition,
+        //     sortable: true,
+        //     cell: (row) => <span>{row.edition}</span>,
+        // },
         {
             name: getFormattedMessage("e-books.input.language.label"),
             selector: (row) => row.language_name,
@@ -110,7 +110,11 @@ const Ebooks = (props) => {
                     onClick={(e) => {
                         setFilePath((prev) => (prev = row.file_name));
                         row.format === 3
-                            ? (location.hash = "/view-book/" + row.file_name)
+                            ? (location.hash =
+                                  "/view-book/" +
+                                  row.file_name +
+                                  "/" +
+                                  row?.library_id)
                             : toggle();
                         // console.log(row.file_name);
                     }}
@@ -147,41 +151,36 @@ const Ebooks = (props) => {
             )
         );
 
-    // console.log({ itemsValue, member });
+    console.log({ itemsValue, member, ebooks, ebookSubscription });
 
     return (
         <section className="member_ebooks">
-            {!isSpinner ? (
-                <div className="container">
-                    <div className="animated fadeIn">
-                        <div className="section-title-center text-center">
-                            <h2 className="display-6">
-                                {getFormattedMessage("e-book.title")}
-                            </h2>
-                            <div className="section-divider divider-traingle"></div>
-                        </div>
+            <div className="container">
+                <div className="animated fadeIn">
+                    <div className="section-title-center text-center">
+                        <h2 className="display-6">
+                            {getFormattedMessage("e-book.title")}
+                        </h2>
+                        <div className="section-divider divider-traingle"></div>
+                    </div>
 
-                        <div className="common-container">
-                            <ReactDataTable
-                                items={itemsValue}
-                                // items={ebooks}
-                                className={"table-bordered table-striped mt-2"}
-                                columns={columns}
-                                loading={isLoading}
-                                totalRows={itemsValue.length}
-                                emptyStateMessageId="e-book.empty-state.title"
-                                emptyNotFoundStateMessageId="e-books.not-found.empty-state.title"
-                                onChange={onChange}
-                                icon={icon.BOOK}
-                            />
-                        </div>
+                    <div className="common-container">
+                        <ReactDataTable
+                            items={itemsValue}
+                            // items={ebooks}
+                            className={"table-bordered table-striped mt-2"}
+                            columns={columns}
+                            loading={isLoading}
+                            totalRows={itemsValue.length}
+                            emptyStateMessageId="e-book.empty-state.title"
+                            emptyNotFoundStateMessageId="e-books.not-found.empty-state.title"
+                            onChange={onChange}
+                            icon={icon.BOOK}
+                        />
                     </div>
                 </div>
-            ) : (
-                <div className="spinner">
-                    <img src="/public/images/301.gif" />
-                </div>
-            )}
+            </div>
+
             <PDFviewerModal {...pdfModalOptions} />
         </section>
     );

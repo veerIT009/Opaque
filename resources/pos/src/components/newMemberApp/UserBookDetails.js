@@ -37,11 +37,26 @@ import {
 const Staff = (props) => {
     const { books, goTo, findBooksWithout, isSpinner, setIsSpinner } = props;
 
-    const handleDetails = (id, library_id) => {
-        findBooksWithout("id=" + id + "&search_by_book=" + true);
-        goTo("/search/staff/" + id + "/" + library_id);
-        setIsSpinner(true);
-        window.scroll({ top: 0, behavior: "smooth" });
+    const handleDetails = (id, library_id, format) => {
+        // findBooksWithout("id=" + id + "&search_by_book=" + true);
+        // goTo("/search/staff/" + id + "/" + library_id);
+
+        if (format && format === 3) {
+            goTo("/ebook-details/" + id + "/" + library_id);
+            setIsSpinner(true);
+            window.scroll({ top: 0, behavior: "smooth" });
+        } else {
+            goTo(
+                "/search/book&" +
+                    name.replaceAll(" ", "") +
+                    "/" +
+                    id +
+                    "/" +
+                    library_id
+            );
+            setIsSpinner(true);
+            window.scroll({ top: 0, behavior: "smooth" });
+        }
     };
 
     useEffect(() => {
@@ -65,7 +80,7 @@ const Staff = (props) => {
                             Lorem ipsum dolor sit amet, tincidunt vestibulum.
                         </h6> */}
                     </div>
-                    {books &&
+                    {books.length &&
                         books.map((book, i) => {
                             return (
                                 <div
@@ -83,7 +98,8 @@ const Staff = (props) => {
                                                 onClick={() =>
                                                     handleDetails(
                                                         book.id,
-                                                        book.library_id
+                                                        book.library_id,
+                                                        book.format
                                                     )
                                                 }
                                             >
@@ -122,28 +138,36 @@ const Staff = (props) => {
                                                             padding: "auto 5px",
                                                         }}
                                                     >
-                                                        <div className="d-flex align-items-center gap-3">
+                                                        <div className="d-flex flex-column align-items-center library_badge">
                                                             <span className="badge badge-info">
-                                                                {book?.items[0]
+                                                                {book.items
+                                                                    .length &&
+                                                                book.items[0]
                                                                     .format ===
-                                                                3
+                                                                    3
                                                                     ? "E-Book"
                                                                     : "Book"}
                                                             </span>
 
-                                                            {book?.library_id ===
+                                                            {book.library_id ===
                                                             111 ? (
-                                                                <span className="badge badge-success">
-                                                                    L1
+                                                                <span className="badge badge-danger">
+                                                                     Dindayal
+                                                                    Upadhyay
+                                                                    Library
                                                                 </span>
-                                                            ) : book?.library_id ===
+                                                            ) : book.library_id ===
                                                               222 ? (
                                                                 <span className="badge badge-danger">
-                                                                    L2
+                                                                    Kundanlal
+                                                                    Gupta
+                                                                    Library
                                                                 </span>
                                                             ) : (
-                                                                <span className="badge badge-primary">
-                                                                    L3
+                                                                <span className="badge badge-danger`">
+                                                                    Rashtramata
+                                                                    Kasturba
+                                                                    Library
                                                                 </span>
                                                             )}
                                                         </div>
@@ -153,7 +177,8 @@ const Staff = (props) => {
                                                         onClick={() =>
                                                             handleDetails(
                                                                 book.id,
-                                                                book.library_id
+                                                                book.library_id,
+                                                                book.format
                                                             )
                                                         }
                                                     >
@@ -228,7 +253,7 @@ const SearchedBooks = (props) => {
                         Lorem ipsum dolor sit amet, tincidunt vestibulum.
                     </h6> */}
                 </div>
-                {bookValues.length > 0 ? (
+                {bookValues.length ? (
                     bookValues.map((book, index) => {
                         return (
                             <div
@@ -267,9 +292,6 @@ const SearchedBooks = (props) => {
                                                 <h6 className="m-0 pb-1">
                                                     {book.title}
                                                 </h6>
-                                                {/* <h5 className="text-success">
-                                                    ₹ {book.price}
-                                                </h5> */}
                                             </div>
                                             <div className="card-desc-box d-flex flex-column align-items-center justify-content-around">
                                                 <div
@@ -278,26 +300,29 @@ const SearchedBooks = (props) => {
                                                         padding: "auto 5px",
                                                     }}
                                                 >
-                                                    <div className="d-flex align-items-center gap-3">
+                                                    <div className="d-flex flex-column align-items-center library_badge">
                                                         <span className="badge badge-info">
                                                             {book.format === 3
                                                                 ? "E-Book"
                                                                 : "Book"}
                                                         </span>
 
-                                                        {book?.library_id ===
+                                                        {book.library_id ===
                                                         111 ? (
                                                             <span className="badge badge-success">
-                                                                L1
+                                                                Dindayal
+                                                                Upadhyay Library
                                                             </span>
-                                                        ) : book?.library_id ===
+                                                        ) : book.library_id ===
                                                           222 ? (
                                                             <span className="badge badge-danger">
-                                                                L2
+                                                                Kundanlal Gupta
+                                                                Library
                                                             </span>
                                                         ) : (
                                                             <span className="badge badge-primary">
-                                                                L3
+                                                                Rashtramata
+                                                                Kasturba Library
                                                             </span>
                                                         )}
                                                     </div>
@@ -322,7 +347,8 @@ const SearchedBooks = (props) => {
                                                     onClick={() =>
                                                         handleDetails(
                                                             book.id,
-                                                            book.library_id
+                                                            book.library_id,
+                                                            book.format
                                                         )
                                                     }
                                                 >
@@ -397,37 +423,34 @@ const BookDetails = (props) => {
     }
 
     const handleReserve = (id, index, library_id) => {
-        // if (!_.isEmpty(member)) {
-        //     if (member.subscription) {
-        //         const isRegistered = isMemberRegistered.length
-        //             ? isMemberRegistered.some(
-        //                   (item) => item.user_library_id == library_id
-        //               )
-        //             : false;
-        //         if (member.user_library_id != library_id && !isRegistered) {
-        //             toggleModal();
-        //         } else {
-        //             if (status && status.length - 1 !== 4) {
-        //                 setReserved(true);
-        //             }
-        //             reserveBook(id ? id : null, index, library_id);
-        //             goTo("/lms/book-history");
-        //         }
-        //     } else {
-        //         goTo(Routes.MEMBER_PLAN);
-        //     }
-        // } else {
-        //     location.hash = "/lms/login";
-        //     dispatch(
-        //         addToast({
-        //             text: "UnAuthenticated",
-        //             type: toastType.ERROR,
-        //         })
-        //     );
-        // }
-        location.href =
-            "https://elibrary.veerit.com/" +
-            location.href.slice(location.href.lastIndexOf("#"));
+        if (!_.isEmpty(member)) {
+            if (member.subscription) {
+                const isRegistered = isMemberRegistered.length
+                    ? isMemberRegistered.some(
+                          (item) => item.user_library_id == library_id
+                      )
+                    : false;
+                if (member.user_library_id != library_id && !isRegistered) {
+                    toggleModal();
+                } else {
+                    if (status && status.length - 1 !== 4) {
+                        setReserved(true);
+                    }
+                    reserveBook(id ? id : null, index, library_id);
+                    goTo("/lms/book-history");
+                }
+            } else {
+                goTo(Routes.MEMBER_PLAN);
+            }
+        } else {
+            location.hash = "/lms/login";
+            dispatch(
+                addToast({
+                    text: "UnAuthenticated",
+                    type: toastType.ERROR,
+                })
+            );
+        }
     };
 
     useEffect(() => {
@@ -435,7 +458,6 @@ const BookDetails = (props) => {
             const esub = subscriptionLimit.find(
                 (sub) => sub.ebook_id == searchBooks[0]?.id
             );
-            console.log({ esub });
             if (esub && esub.count === 20) {
                 setIsAvailable(false);
             }
@@ -443,38 +465,35 @@ const BookDetails = (props) => {
     }, [searchBooks.length, subscriptionLimit.length]);
 
     const handleSubscribe = (id, library_id) => {
-        // if (member) {
-        //     if (member.subscription) {
-        //         const isRegistered = isMemberRegistered.length
-        //             ? isMemberRegistered.some(
-        //                   (item) => item.user_library_id == library_id
-        //               )
-        //             : false;
-        //         if (member.user_library_id != library_id && !isRegistered) {
-        //             toggleModal();
-        //         } else {
-        //             navigate("/lms/ebook-subscription/" + id);
-        //         }
-        //     }
-        // } else if (!isAvailable) {
-        //     dispatch(
-        //         addToast({
-        //             text: "Ebook is Unavailable.",
-        //             type: toastType.ERROR,
-        //         })
-        //     );
-        // } else {
-        //     navigate("/lms/login");
-        //     dispatch(
-        //         addToast({
-        //             text: "UnAuthenticated",
-        //             type: toastType.ERROR,
-        //         })
-        //     );
-        // }
-        location.href =
-            "https://elibrary.veerit.com/" +
-            location.href.slice(location.href.lastIndexOf("#"));
+        if (member) {
+            if (member.subscription) {
+                const isRegistered = isMemberRegistered.length
+                    ? isMemberRegistered.some(
+                          (item) => item.user_library_id == library_id
+                      )
+                    : false;
+                if (member.user_library_id != library_id && !isRegistered) {
+                    toggleModal();
+                } else {
+                    navigate("/lms/ebook-subscription/" + id);
+                }
+            }
+        } else if (!isAvailable) {
+            dispatch(
+                addToast({
+                    text: "Ebook is Unavailable.",
+                    type: toastType.ERROR,
+                })
+            );
+        } else {
+            navigate("/lms/login");
+            dispatch(
+                addToast({
+                    text: "UnAuthenticated",
+                    type: toastType.ERROR,
+                })
+            );
+        }
     };
 
     useEffect(() => {
@@ -592,17 +611,21 @@ const BookDetails = (props) => {
                                                       {book.book.library_id ===
                                                       111 ? (
                                                           <span className="badge badge-success">
-                                                              L1
+                                                              Dindayal Upadhyay
+                                                              Digital Library
                                                           </span>
                                                       ) : book.book
                                                             .library_id ===
                                                         222 ? (
                                                           <span className="badge badge-danger">
-                                                              L2
+                                                              Kundanlal Gupta
+                                                              Digital Library
                                                           </span>
                                                       ) : (
                                                           <span className="badge badge-primary">
-                                                              L3
+                                                              Rashtramata
+                                                              Kasturba Digital
+                                                              Library
                                                           </span>
                                                       )}
                                                   </p>
@@ -614,7 +637,11 @@ const BookDetails = (props) => {
                                                           : ""}
                                                   </p>
 
-                                                  {/* <button
+                                                  {/* <h4 className="cost">
+                            ₹ {book ? book.items[0].price : "NA"}
+                        </h4> */}
+
+                                                  <button
                                                       type="button"
                                                       className={`frontend-btn ${
                                                           (status.length - 1 <=
@@ -669,23 +696,7 @@ const BookDetails = (props) => {
                                                               ? "Reserved"
                                                               : "Reserve"}
                                                       </span>
-                                                  </button> */}
-                                                  <a
-                                                      target="_blank"
-                                                      href={
-                                                          "https://elibrary.veerit.com/" +
-                                                          location.href.slice(
-                                                              location.href.lastIndexOf(
-                                                                  "#"
-                                                              )
-                                                          )
-                                                      }
-                                                      className="frontend-btn"
-                                                  >
-                                                      {book.format == 3
-                                                          ? "Subscribe"
-                                                          : "Reserve"}
-                                                  </a>
+                                                  </button>
 
                                                   {book.pdf_preview_file && (
                                                       <button
@@ -695,9 +706,7 @@ const BookDetails = (props) => {
                                                               toggle()
                                                           }
                                                       >
-                                                          <span>
-                                                              PDF Preview
-                                                          </span>
+                                                          <span>Preview</span>
                                                       </button>
                                                   )}
                                               </div>
@@ -786,16 +795,19 @@ const BookDetails = (props) => {
                                                   {book.book.library_id ===
                                                   111 ? (
                                                       <span className="badge badge-success">
-                                                          L1
+                                                          Dindayal Upadhyay
+                                                          Digital Library
                                                       </span>
                                                   ) : book.book.library_id ===
                                                     222 ? (
                                                       <span className="badge badge-danger">
-                                                          L2
+                                                          Kundanlal Gupta
+                                                          Digital Library
                                                       </span>
                                                   ) : (
                                                       <span className="badge badge-primary">
-                                                          L3
+                                                          Rashtramata Kasturba
+                                                          Digital Library
                                                       </span>
                                                   )}
                                               </p>
@@ -879,171 +891,139 @@ const BookDetails = (props) => {
                                             <div className="product_content rounded-lg">
                                                 {book.format !== 3 ? (
                                                     book.status !== 2 && (
-                                                        // <button
-                                                        //     type="button"
-                                                        //     className={`frontend-btn ${
-                                                        //         (status.length -
-                                                        //             1 <=
-                                                        //             4 &&
-                                                        //             isReserved) ||
-                                                        //         (status.length -
-                                                        //             1 <=
-                                                        //             4 &&
-                                                        //             history.length >
-                                                        //                 0 &&
-                                                        //             history[0]
-                                                        //                 .status !==
-                                                        //                 5)
-                                                        //             ? "btn-success"
-                                                        //             : "btn-warning"
-                                                        //     }`}
-                                                        //     disabled={
-                                                        //         (status.length -
-                                                        //             1 <=
-                                                        //             4 &&
-                                                        //             isReserved) ||
-                                                        //         (status.length -
-                                                        //             1 <=
-                                                        //             4 &&
-                                                        //             history.length >
-                                                        //                 0 &&
-                                                        //             history[0]
-                                                        //                 .status !==
-                                                        //                 5)
-                                                        //             ? true
-                                                        //             : false
-                                                        //     }
-                                                        //     onClick={() =>
-                                                        //         handleReserve(
-                                                        //             book.id,
-                                                        //             index,
-                                                        //             book.library_id
-                                                        //         )
-                                                        //     }
-                                                        // >
-                                                        //     <span>
-                                                        //         {" "}
-                                                        //         {history.length >
-                                                        //             0 &&
-                                                        //         history[0]
-                                                        //             .status ===
-                                                        //             2
-                                                        //             ? "Issued"
-                                                        //             : (history.length >
-                                                        //                   0 &&
-                                                        //                   history[0]
-                                                        //                       .status ===
-                                                        //                       1 &&
-                                                        //                   status.length -
-                                                        //                       1 <=
-                                                        //                       4) ||
-                                                        //               isReserved
-                                                        //             ? "Reserved"
-                                                        //             : "Reserve"}
-                                                        //     </span>
-                                                        // </button>
-                                                        <a
-                                                            target="_blank"
-                                                            href={
-                                                                "https://elibrary.veerit.com/" +
-                                                                location.href.slice(
-                                                                    location.href.lastIndexOf(
-                                                                        "#"
-                                                                    )
+                                                        <button
+                                                            type="button"
+                                                            className={`frontend-btn ${
+                                                                (status.length -
+                                                                    1 <=
+                                                                    4 &&
+                                                                    isReserved) ||
+                                                                (status.length -
+                                                                    1 <=
+                                                                    4 &&
+                                                                    history.length >
+                                                                        0 &&
+                                                                    history[0]
+                                                                        .status !==
+                                                                        5)
+                                                                    ? "btn-success"
+                                                                    : "btn-warning"
+                                                            }`}
+                                                            disabled={
+                                                                (status.length -
+                                                                    1 <=
+                                                                    4 &&
+                                                                    isReserved) ||
+                                                                (status.length -
+                                                                    1 <=
+                                                                    4 &&
+                                                                    history.length >
+                                                                        0 &&
+                                                                    history[0]
+                                                                        .status !==
+                                                                        5)
+                                                                    ? true
+                                                                    : false
+                                                            }
+                                                            onClick={() =>
+                                                                handleReserve(
+                                                                    book.id,
+                                                                    index,
+                                                                    book.library_id
                                                                 )
                                                             }
-                                                            className="frontend-btn"
                                                         >
-                                                            {book.format == 3
-                                                                ? "Subscribe"
-                                                                : "Reserve"}
-                                                        </a>
+                                                            <span>
+                                                                {" "}
+                                                                {history.length >
+                                                                    0 &&
+                                                                history[0]
+                                                                    .status ===
+                                                                    2
+                                                                    ? "Issued"
+                                                                    : (history.length >
+                                                                          0 &&
+                                                                          history[0]
+                                                                              .status ===
+                                                                              1 &&
+                                                                          status.length -
+                                                                              1 <=
+                                                                              4) ||
+                                                                      isReserved
+                                                                    ? "Reserved"
+                                                                    : "Reserve"}
+                                                            </span>
+                                                        </button>
                                                     )
                                                 ) : (
-                                                    // <button
-                                                    //     type="button"
-                                                    //     className={`frontend-btn ${
-                                                    //         ebookSub &&
-                                                    //         moment(
-                                                    //             ebookSub.returned_on
-                                                    //         ).format(
-                                                    //             "YYYY-MM-DD"
-                                                    //         ) <
-                                                    //             moment().format(
-                                                    //                 "YYYY-MM-DD"
-                                                    //             )
-                                                    //             ? "btn-danger"
-                                                    //             : "btn-warning"
-                                                    //     }`}
-                                                    //     disabled={
-                                                    //         !isAvailable &&
-                                                    //         ebookSub &&
-                                                    //         moment(
-                                                    //             ebookSub.returned_on
-                                                    //         ).format(
-                                                    //             "YYYY-MM-DD"
-                                                    //         ) >
-                                                    //             moment().format(
-                                                    //                 "YYYY-MM-DD"
-                                                    //             )
-                                                    //             ? true
-                                                    //             : false
-                                                    //     }
-                                                    //     onClick={() =>
-                                                    //         handleSubscribe(
-                                                    //             book.id,
-                                                    //             book.book
-                                                    //                 .library_id
-                                                    //         )
-                                                    //     }
-                                                    // >
-                                                    //     <span>
-                                                    //         {" "}
-                                                    //         {ebookSubscription.length >
-                                                    //             0 &&
-                                                    //         ebookSub &&
-                                                    //         !(
-                                                    //             moment(
-                                                    //                 ebookSub.returned_on
-                                                    //             ).format(
-                                                    //                 "YYYY-MM-DD"
-                                                    //             ) <
-                                                    //             moment().format(
-                                                    //                 "YYYY-MM-DD"
-                                                    //             )
-                                                    //         )
-                                                    //             ? "Ebook is Subscribed"
-                                                    //             : ebookSub &&
-                                                    //               moment(
-                                                    //                   ebookSub.returned_on
-                                                    //               ).format(
-                                                    //                   "YYYY-MM-DD"
-                                                    //               ) <
-                                                    //                   moment().format(
-                                                    //                       "YYYY-MM-DD"
-                                                    //                   )
-                                                    //             ? "Book is Expired want to Renew"
-                                                    //             : isAvailable
-                                                    //             ? "Subscribe"
-                                                    //             : "Unavailable"}
-                                                    //     </span>
-                                                    // </button>
-                                                    <a
-                                                        target="_blank"
-                                                        href={
-                                                            "https://elibrary.veerit.com/" +
-                                                            location.href.slice(
-                                                                location.href.lastIndexOf(
-                                                                    "#"
+                                                    <button
+                                                        type="button"
+                                                        className={`frontend-btn ${
+                                                            ebookSub &&
+                                                            moment(
+                                                                ebookSub.returned_on
+                                                            ).format(
+                                                                "YYYY-MM-DD"
+                                                            ) <
+                                                                moment().format(
+                                                                    "YYYY-MM-DD"
                                                                 )
+                                                                ? "btn-danger"
+                                                                : "btn-warning"
+                                                        }`}
+                                                        disabled={
+                                                            !isAvailable &&
+                                                            ebookSub &&
+                                                            moment(
+                                                                ebookSub.returned_on
+                                                            ).format(
+                                                                "YYYY-MM-DD"
+                                                            ) >
+                                                                moment().format(
+                                                                    "YYYY-MM-DD"
+                                                                )
+                                                                ? true
+                                                                : false
+                                                        }
+                                                        onClick={() =>
+                                                            handleSubscribe(
+                                                                book.id,
+                                                                book.book
+                                                                    .library_id
                                                             )
                                                         }
-                                                        className="frontend-btn"
                                                     >
-                                                        {book.format == 3
-                                                            ? "Subscribe"
-                                                            : "Reserve"}
-                                                    </a>
+                                                        <span>
+                                                            {" "}
+                                                            {ebookSubscription.length >
+                                                                0 &&
+                                                            ebookSub &&
+                                                            !(
+                                                                moment(
+                                                                    ebookSub.returned_on
+                                                                ).format(
+                                                                    "YYYY-MM-DD"
+                                                                ) <
+                                                                moment().format(
+                                                                    "YYYY-MM-DD"
+                                                                )
+                                                            )
+                                                                ? "Ebook is Subscribed"
+                                                                : ebookSub &&
+                                                                  moment(
+                                                                      ebookSub.returned_on
+                                                                  ).format(
+                                                                      "YYYY-MM-DD"
+                                                                  ) <
+                                                                      moment().format(
+                                                                          "YYYY-MM-DD"
+                                                                      )
+                                                                ? "Book is Expired want to Renew"
+                                                                : isAvailable
+                                                                ? "Subscribe"
+                                                                : "Unavailable"}
+                                                        </span>
+                                                    </button>
                                                 )}
                                                 {(ebookSub ||
                                                     ebookSub?.length > 0) &&
@@ -1081,7 +1061,7 @@ const BookDetails = (props) => {
                                                         className="ml-3 frontend-btn btn btn-info"
                                                         onClick={() => toggle()}
                                                     >
-                                                        <span>PDF Preview</span>
+                                                        <span>Preview</span>
                                                     </button>
                                                 )}
                                             </div>
