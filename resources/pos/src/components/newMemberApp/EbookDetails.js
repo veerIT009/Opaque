@@ -403,7 +403,7 @@ const BookDetails = (props) => {
                                                 <span> Read</span>
                                             </button>
                                         ) : null}
-                                        {book.pdf_preview_file && (
+                                        {/* {book.pdf_preview_file && (
                                             <button
                                                 type="button"
                                                 className="ml-3 frontend-btn btn btn-info"
@@ -411,7 +411,7 @@ const BookDetails = (props) => {
                                             >
                                                 <span>PDF Preview</span>
                                             </button>
-                                        )}
+                                        )} */}
                                     </div>
                                 </div>
                             </div>

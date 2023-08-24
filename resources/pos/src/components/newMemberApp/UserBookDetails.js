@@ -698,7 +698,7 @@ const BookDetails = (props) => {
                                                       </span>
                                                   </button>
 
-                                                  {book.pdf_preview_file && (
+                                                  {/* {book.pdf_preview_file && (
                                                       <button
                                                           type="button"
                                                           className="ml-3 frontend-btn btn btn-info"
@@ -708,7 +708,7 @@ const BookDetails = (props) => {
                                                       >
                                                           <span>Preview</span>
                                                       </button>
-                                                  )}
+                                                  )} */}
                                               </div>
                                           </div>
                                       </div>
@@ -1055,7 +1055,7 @@ const BookDetails = (props) => {
                                                         <span> Preview</span>
                                                     </button>
                                                 ) : null}
-                                                {book.pdf_preview_file && (
+                                                {/* {book.pdf_preview_file && (
                                                     <button
                                                         type="button"
                                                         className="ml-3 frontend-btn btn btn-info"
@@ -1063,7 +1063,7 @@ const BookDetails = (props) => {
                                                     >
                                                         <span>Preview</span>
                                                     </button>
-                                                )}
+                                                )} */}
                                             </div>
                                         </div>
                                     </div>
